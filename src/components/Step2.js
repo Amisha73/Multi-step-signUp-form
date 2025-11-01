@@ -13,11 +13,11 @@ const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
     const { username, password, confirmPassword } = formData;
 
     if (!username || !password || !confirmPassword) {
-      setError("⚠️ Please fill all the fields.");
+      setError("Please fill all the fields.");
     } else if (password.length < 6) {
-      setError("⚠️ Password must be at least 6 characters.");
+      setError("Password must be at least 6 characters.");
     } else if (password !== confirmPassword) {
-      setError("⚠️ Passwords do not match.");
+      setError("Passwords do not match.");
     } else {
       nextStep();
     }
@@ -65,6 +65,9 @@ const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
           className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-400 bg-white/70"
         />
       </div>
+      {error && (
+        <p className="text-red-500 mt-4 text-sm font-medium">{error}</p>
+      )}
 
       <div className="flex justify-between mt-6">
         <button

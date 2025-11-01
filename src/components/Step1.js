@@ -17,9 +17,9 @@ const Step1 = ({ formData, setFormData, nextStep }) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!fullName || !email || !phone) {
-      setError("⚠️ Please fill all the fields.");
+      setError("Please fill all the fields.");
     } else if (!emailPattern.test(email)) {
-      setError("⚠️ Please enter a valid email address.");
+      setError("Please enter a valid email address.");
     } else {
       nextStep();
     }
@@ -57,6 +57,9 @@ const Step1 = ({ formData, setFormData, nextStep }) => {
           className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none bg-white/70"
         />
       </div>
+      {error && (
+        <p className="text-red-500 mt-4 text-sm font-medium">{error}</p>
+      )}
 
       <button
         onClick={handleNext}
